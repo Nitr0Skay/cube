@@ -139,7 +139,7 @@
 		document.body.appendChild(renderer.domElement); // Append the WebGL viewport to the DOM.
 		
 		var color = { color: "aqua" };
-		var geometry = new THREE.CubeGeometry(20, 20, 20); // Create a 20 by 20 by 20 cube.
+		var geometry = new THREE.BoxGeometry(20, 20, 20); // Create a 20 by 20 by 20 cube.
 		var material = new THREE.MeshBasicMaterial( color ); 
 		var cube = new THREE.Mesh(geometry, material); // Create a mesh based on the specified geometry (cube) and material (blue skin).
 		scene.add(cube); // Add the cube at (0, 0, 0).

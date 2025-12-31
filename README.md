@@ -1,4 +1,4 @@
-# Simple Cude
+# Simple Cube
 
 ## Purpose
 It is simple cube which I created almost ten years ago. Now I want to get back to work with Three.js library and Improve my skills

@@ -1,0 +1,38 @@
+body {
+	text-align: center;
+	margin: 0;
+	max-width: 100vw;
+}
+
+canvas {
+	max-width: 100%;
+	height: 100%;
+}
+		
+button:hover {
+	color: green;
+}
+		
+.kolory {
+	margin: 25px;
+}
+		
+.show {
+	display: block !important;
+}
+		
+.koloryPodstawowe {
+	margin: 25px;
+	width: 100%;
+	display: none;
+}
+		
+.koloryRozszerzone {
+	margin: 25px;
+	width: 100%;
+	display: none;
+}
+		
+.rozmiar {
+	margin: 25px;
+}

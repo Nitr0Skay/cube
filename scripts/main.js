@@ -203,7 +203,7 @@
 			let rotation = cube.rotation.x
 			,positionY = cube.position.y;
 			
-			geometry = new THREE.CubeGeometry(20, 20, 20);
+			geometry = new THREE.BoxGeometry(20, 20, 20);
 			reModel(geometry, material, rotation, positionY);
 		}, false);
   });

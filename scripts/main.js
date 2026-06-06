@@ -2,23 +2,23 @@
   'use strict';
 
   document.addEventListener('DOMContentLoaded', function() {
-    var scene = new THREE.Scene(); // Create a Three.js scene object.
-		var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); // Define the perspective camera's attributes.
+    let scene = new THREE.Scene(); // Create a Three.js scene object.
+		let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); // Define the perspective camera's attributes.
 
-		var renderer = window.WebGLRenderingContext ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer(); // Fallback to canvas renderer, if necessary.
+		let renderer = window.WebGLRenderingContext ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer(); // Fallback to canvas renderer, if necessary.
 		renderer.setSize(window.innerWidth, window.innerHeight); // Set the size of the WebGL viewport.
 		document.body.appendChild(renderer.domElement); // Append the WebGL viewport to the DOM.
 		
-		var color = { color: "aqua" };
-		var geometry = new THREE.BoxGeometry(20, 20, 20); // Create a 20 by 20 by 20 cube.
-		var material = new THREE.MeshBasicMaterial( color ); 
-		var cube = new THREE.Mesh(geometry, material); // Create a mesh based on the specified geometry (cube) and material (blue skin).
+		let color = { color: "aqua" };
+		let geometry = new THREE.BoxGeometry(20, 20, 20); // Create a 20 by 20 by 20 cube.
+		let material = new THREE.MeshBasicMaterial( color ); 
+		let cube = new THREE.Mesh(geometry, material); // Create a mesh based on the specified geometry (cube) and material (blue skin).
 		scene.add(cube); // Add the cube at (0, 0, 0).
 
 		camera.position.z = 50; // Move the camera away from the origin, down the positive z-axis.
 		cube.position.y = 20;
 			
-		var y = 0
+		let y = 0
 		,anima = null
 		,predkoscPoczatkowa = 0.001
 		,predkoscRotacji = 0.01
@@ -28,14 +28,14 @@
 		,fall = true
 		,fallSpeed;
 		
-		var podstawowyWybor = document.getElementById('podstawowy')
+		let podstawowyWybor = document.getElementById('podstawowy')
 		,rozszerzonyWybor = document.getElementById('rozszerzony')
 		,koloryPodstawowe = document.getElementsByClassName('koloryPodstawowe')[0]
 		,koloryRozszerzone = document.getElementsByClassName('koloryRozszerzone')[0]
 		,wybranyRozmiar = document.getElementById('wybranyRozmiar')
 		,przywrocRozmiar = document.getElementById('przywrocRozmiar');
 		
-		var reset = function() {
+		let reset = function() {
 			cube.rotation.x = 0.01; // Rotate the sphere by a small amount about the x- and y-axes.
 			cube.rotation.y = 0.01; 
 			cube.position.y = 20;
@@ -43,7 +43,7 @@
 			render()
 		};
 	
-		var render = function() {
+		let render = function() {
 			cube.rotation.x += predkoscRotacji; // Rotate the sphere by a small amount about the x- and y-axes.
 			cube.rotation.y += predkoscRotacji; 
 			cube.position.y -= y;		
@@ -60,7 +60,7 @@
 			}
 		};
 		
-		var reModel = function(geometry, material, rotation, positionY) {
+		let reModel = function(geometry, material, rotation, positionY) {
 			scene.remove(cube);
 			cube = new THREE.Mesh(geometry, material);
 			scene.add(cube);
@@ -69,11 +69,11 @@
 			cube.rotation.y = rotation;
 		};
 		
-		var hexKonwersja = function(liczba) {
-			var wynik = "";
+		let hexKonwersja = function(liczba) {
+			let wynik = "";
 			
-			var szesnastki = parseInt(liczba / 16);
-			var resztki = parseInt(liczba % 16);
+			let szesnastki = parseInt(liczba / 16);
+			let resztki = parseInt(liczba % 16);
 			
 			wynik = szesnastki.toString(16) + resztki.toString(16);
 			return wynik;
@@ -104,7 +104,7 @@
 		}, false);
 
 		document.getElementById('stan').addEventListener('click', function(e) {
-			var button = document.getElementById('stan');
+			let button = document.getElementById('stan');
 			if(animation) {
 				cancelAnimationFrame(anima);
 				animation = false;
@@ -117,7 +117,7 @@
 		}, false);
 
 		document.getElementById('rotate').addEventListener('click', function(e) {
-			var button = document.getElementById('rotate');
+			let button = document.getElementById('rotate');
 			if(rotate) {
 				rotateSpeed = predkoscRotacji;
 				predkoscRotacji = 0;
@@ -131,7 +131,7 @@
 		}, false);
 
 		document.getElementById('fallen').addEventListener('click', function(e) {
-			var button = document.getElementById('fallen');
+			let button = document.getElementById('fallen');
 			if(fall) {
 				fallSpeed = y;
 				y = 0;
@@ -147,7 +147,7 @@
 		}, false);
 		
 		wybranyKolor.addEventListener('change', function(e) {
-			var color = {}
+			let color = {}
 			,rotation = cube.rotation.x
 			,positionY = cube.position.y;
 			
@@ -158,7 +158,7 @@
 		}, false);
 		
 		koloryRozszerzone.addEventListener('input', function(e) {
-			var color = {}
+			let color = {}
 			,red = Number(document.getElementById('red').value) || 0
 			,green = Number(document.getElementById('green').value) || 0
 			,blue = Number(document.getElementById('blue').value) || 0;
@@ -172,7 +172,7 @@
 			blue = hexKonwersja(blue);
 			
 			color.color = "#" + red + green + blue; console.log(red);
-			var rotation = cube.rotation.x
+			let rotation = cube.rotation.x
 			,positionY = cube.position.y;
 			
 			material = new THREE.MeshBasicMaterial( color );
@@ -191,7 +191,7 @@
 		}, false);
 		
 		wybranyRozmiar.addEventListener('change', function(e) {
-			var rozmiar = parseInt(this.value)
+			let rozmiar = parseInt(this.value)
 			,rotation = cube.rotation.x
 			,positionY = cube.position.y;
 			
@@ -200,7 +200,7 @@
 		}, false);
 		
 		przywrocRozmiar.addEventListener('click', function(e) {
-			var rotation = cube.rotation.x
+			let rotation = cube.rotation.x
 			,positionY = cube.position.y;
 			
 			geometry = new THREE.CubeGeometry(20, 20, 20);
